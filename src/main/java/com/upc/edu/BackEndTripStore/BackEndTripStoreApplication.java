@@ -18,7 +18,7 @@ public class BackEndTripStoreApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("https://tripstore.netlify.app", "http://localhost:4200/").allowedMethods("*").allowedHeaders("*");
+				registry.addMapping("/**").allowedOrigins("https://front-end-tripstore.vercel.app", "http://localhost:4200/").allowedMethods("*").allowedHeaders("*");
 			}
 		};
 	}

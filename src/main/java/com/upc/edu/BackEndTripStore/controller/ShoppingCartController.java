@@ -35,6 +35,8 @@ public class ShoppingCartController {
     @Transactional(readOnly = true)
     @GetMapping("/shopping-carts")
     public ResponseEntity<List<ShoppingCart>> getAllShoppingCarts() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         return new ResponseEntity<>(shoppingCartService.getAllShoppingCarts(), HttpStatus.OK);
     }
 
@@ -43,6 +45,8 @@ public class ShoppingCartController {
     @Transactional(readOnly = true)
     @GetMapping("/shopping-carts/{id}")
     public ResponseEntity<ShoppingCart> getShoppingCartById(@PathVariable int id) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         return new ResponseEntity<>(shoppingCartService.getShoppingCartById(id), HttpStatus.OK);
     }
 
@@ -51,6 +55,8 @@ public class ShoppingCartController {
     @Transactional(readOnly = true)
     @GetMapping("/shopping-carts/users/{id}")
     public ResponseEntity<ShoppingCart> getShoppingCartByUserId(@PathVariable int id) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         notFoundUser(id);
         notFoundShoppingCartByUserId(id);
         return new ResponseEntity<>(shoppingCartService.getShoppingCartByUserId(id), HttpStatus.OK);
@@ -61,6 +67,8 @@ public class ShoppingCartController {
     @Transactional
     @PostMapping("/shopping-carts")
     public ResponseEntity<ShoppingCart> createShoppingCart(@RequestBody ShoppingCart shoppingCart) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         validateShoppingCart(shoppingCart);
         notFoundUser(shoppingCart.getUser().getId());
         existsShoppingCartByUserId(shoppingCart.getUser().getId());
@@ -71,6 +79,8 @@ public class ShoppingCartController {
     // Method: DELETE
     @DeleteMapping("/shopping-carts/{id}")
     public ResponseEntity<String> deleteShoppingCart(@PathVariable int id) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         shoppingCartService.deleteShoppingCart(id);
         return new ResponseEntity<>("ShoppingCart with id: " + id + " was deleted", HttpStatus.OK);
     }

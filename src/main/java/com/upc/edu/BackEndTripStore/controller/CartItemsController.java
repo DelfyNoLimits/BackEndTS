@@ -23,6 +23,7 @@ public class CartItemsController {
     // Endpoint: /api/tripstore/v1/cart-items
     // Method: GET
     @Transactional(readOnly = true)
+
     @GetMapping("/cart-items")
     public ResponseEntity<List<CartItems>> getAllCartItems() {
         return new ResponseEntity<>(cartItemsService.getAllCartItems(), HttpStatus.OK);

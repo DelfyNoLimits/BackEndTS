@@ -27,6 +27,7 @@ public class OrderController {
     @GetMapping("/orders")
     public ResponseEntity<List<Order>> getAllOrders() {
         return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.OK);
+
     }
 
     // Endpoint: /api/tripstore/v1/orders/{id}
@@ -43,6 +44,7 @@ public class OrderController {
     @PostMapping("/orders")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         return new ResponseEntity<>(orderService.saveOrder(order), HttpStatus.CREATED);
+
     }
 
     // Endpoint: /api/tripstore/v1/orders/{id}

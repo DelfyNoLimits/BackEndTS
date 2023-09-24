@@ -6,6 +6,7 @@ import com.upc.edu.BackEndTripStore.model.ShoppingCart;
 import com.upc.edu.BackEndTripStore.service.ShoppingCartService;
 import com.upc.edu.BackEndTripStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,11 @@ public class ShoppingCartController {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
     }
-
+    private HttpHeaders getCorsHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        return headers;
+    }
     // Endpoint: /api/tripstore/v1/shopping-carts
     // Method: GET
     @Transactional(readOnly = true)

@@ -4,6 +4,7 @@ import com.upc.edu.BackEndTripStore.exception.ValidationException;
 import com.upc.edu.BackEndTripStore.model.User;
 import com.upc.edu.BackEndTripStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/tripstore/v1")
 public class UserController {
+
     private final UserService userService;
 
     @Autowired
@@ -23,7 +25,10 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping("/user/authenticate")
+
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
         String username = credentials.get("username");
         String password = credentials.get("password");
 

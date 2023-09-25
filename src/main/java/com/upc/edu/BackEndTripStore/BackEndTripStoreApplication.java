@@ -21,7 +21,7 @@ public class BackEndTripStoreApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins( "http://localhost:4200", "https://front-end-tripstore.vercel.app")
+						.allowedOrigins( "*")
 						.allowedMethods("*")
 						.allowedHeaders("*");
 			}

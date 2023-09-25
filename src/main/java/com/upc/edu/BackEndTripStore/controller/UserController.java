@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tripstore/v1")
+@CrossOrigin(origins = "https://frontend-ts.vercel.app")
 public class UserController {
     HttpHeaders headers = new HttpHeaders();
     private final UserService userService;

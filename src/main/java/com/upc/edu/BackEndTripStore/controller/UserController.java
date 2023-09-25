@@ -17,17 +17,18 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/tripstore/v1")
 public class UserController {
-
+    HttpHeaders headers = new HttpHeaders();
     private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @PostMapping("/user/authenticate")
 
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
-        HttpHeaders headers = new HttpHeaders();
+
         headers.add("Access-Control-Allow-Origin", "*");
         String username = credentials.get("username");
         String password = credentials.get("password");
@@ -47,30 +48,33 @@ public class UserController {
     }
 
     @GetMapping("/users")
+
     public List<User> getAllUsers() {
+        headers.add("Access-Control-Allow-Origin", "*");
         return userService.getAllUsers();
 
     }
 
     @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable int id) { headers.add("Access-Control-Allow-Origin", "*");
         return userService.getUserById(id);
     }
     @PostMapping("/users")
     @Transactional
-    public User createUser(@RequestBody  User user) {
+    public User createUser(@RequestBody  User user) { headers.add("Access-Control-Allow-Origin", "*");
         validateUser(user);
         return userService.createUser(user);
     }
     @PutMapping("users/{id}")
     @Transactional
-    public User updateUser(@PathVariable int id, @RequestBody User updatedUser) {
+    public User updateUser(@PathVariable int id, @RequestBody User updatedUser) { headers.add("Access-Control-Allow-Origin", "*");
         validateUser(updatedUser);
         return userService.updateUser(id, updatedUser);
     }
     @DeleteMapping("users/{id}")
     @Transactional
-    public void deleteUser(@PathVariable int id) {
+    public void deleteUser(@PathVariable int id) { headers.add("Access-Control-Allow-Origin", "*");
+
         userService.deleteUser(id);
     }
 

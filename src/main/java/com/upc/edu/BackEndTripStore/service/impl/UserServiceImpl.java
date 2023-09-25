@@ -5,6 +5,7 @@ import com.upc.edu.BackEndTripStore.model.User;
 import com.upc.edu.BackEndTripStore.repository.UserRepository;
 import com.upc.edu.BackEndTripStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,15 +13,18 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    HttpHeaders headers = new HttpHeaders();
+
     private final UserRepository userRepository;
 
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {headers.add("Access-Control-Allow-Origin", "*");
         this.userRepository = userRepository;
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers() {headers.add("Access-Control-Allow-Origin", "*");
         return userRepository.findAll();
     }
 
@@ -31,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
+    public User createUser(User user) {headers.add("Access-Control-Allow-Origin", "*");
         return userRepository.save(user);
     }
 
@@ -61,7 +65,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUsernameAndPassword(String username, String password) {
+    public User getUserByUsernameAndPassword(String username, String password) { headers.add("Access-Control-Allow-Origin", "*");
         return userRepository.findByUsernameAndPassword(username, password);
     }
 

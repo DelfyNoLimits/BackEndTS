@@ -14,17 +14,18 @@ public class BackEndTripStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackEndTripStoreApplication.class, args);
 	}
-
+/*
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins( "*")
+						.allowedOrigins("*")
 						.allowedMethods("*")
 						.allowedHeaders("*");
 			}
 		};
 	}
+*/
 }

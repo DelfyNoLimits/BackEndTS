@@ -25,11 +25,7 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping("/user/authenticate")
-    private HttpHeaders getCorsHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
-        return headers;
-    }
+
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Access-Control-Allow-Origin", "*");

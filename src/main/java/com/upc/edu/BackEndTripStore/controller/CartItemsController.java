@@ -36,7 +36,7 @@ public class CartItemsController {
     public ResponseEntity<CartItems> getCartItemsById(@PathVariable int id) {
         return new ResponseEntity<>(cartItemsService.getCartItemsById(id), HttpStatus.OK);
     }
-"skuki"
+
     // Endpoint: /api/tripstore/v1/cart-items/shopping-carts/{id}
     // Method: GET
     @Transactional(readOnly = true)

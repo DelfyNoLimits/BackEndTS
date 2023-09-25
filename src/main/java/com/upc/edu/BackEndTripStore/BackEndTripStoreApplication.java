@@ -20,7 +20,7 @@ public class BackEndTripStoreApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
+				registry.addMapping("/api/**")
 						.allowedOrigins("*")  // Permitir cualquier origen
 						.allowedMethods("*")
 						.allowedHeaders("*");

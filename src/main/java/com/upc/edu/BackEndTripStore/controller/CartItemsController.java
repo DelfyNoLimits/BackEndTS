@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tripstore/v1")
-@CrossOrigin(origins = "https://frontend-ts.vercel.app")
+
 public class CartItemsController {
     private final CartItemsService cartItemsService;
 
